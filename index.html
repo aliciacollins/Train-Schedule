@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Train Schedule</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.2.0/firebase.js"></script>
+     <!-- jQuery -->
+  <script src="https://code.jquery.com/jquery.js"></script>
+
+  <!-- Link to Moment.js should go here -->
+  <script src="https://cdn.jsdelivr.net/momentjs/2.12.0/moment.min.js"></script>
+
+</head>
+
+<body>
+    <!-- title div -->
+    <div class="container-fluid" id="title">
+        <h1>Don't Miss the Train</h1>
+    </div>
+    <!-- form div -->
+    <!-- results div -->
+    <div class="container-fluid fields">
+        <div class="row" id="results-header">
+            <div class="col-sm-12">
+                <h4><b>Current Train Schedule</b></h4>
+                <table class="table" id="table-results">
+                    <thead>
+                        <tr id=tableHeaders>
+                            <th scope="col">Train Name</th>
+                            <th scope="col">Desination</th>
+                            <th scope="col">Frequency (min)</th>
+                            <th scope="col">Next Arrival</th>
+                            <th scope="col">Minutes Away</th>
+                        </tr>
+                    </thead>
+                    <tbody id="results-entry">
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    
+    <div class="container-fluid fields">
+        <h3>Add Train</h3>
+        <form>
+            <div class="form-group">
+                <label for="formGroupExampleInput" id="header">Train Name</label>
+                <input type="text" class="form-control" id="submitTrainName" placeholder="Orient Express">
+            </div>
+            <div class="form-group">
+                <label for="formGroupExampleInput2">Destination</label>
+                <input type="text" class="form-control" id="submitDestination" placeholder="Paris">
+            </div>
+            <div class="form-group">
+                <label for="formGroupExampleInput2">First Train Time (HH:mm - millitary time)</label>
+                <input type="text" class="form-control" id="submitTrainTime" placeholder="12:30">
+            </div>
+            <div class="form-group">
+                <label for="formGroupExampleInput2">Frequency (min)</label>
+                <input type="text" class="form-control" id="submitFrequency" placeholder="30">
+            </div>
+            <input class="btn btn-primary" id="submit-button" type="button" value="Submit">
+        </form>
+    </div>
+
+    
+    <script src="app.js"></script>
+  
+
+</body>
+
+</html>

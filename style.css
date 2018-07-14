@@ -1,0 +1,38 @@
+/* title */
+#title{
+    
+    font-size: xx-large;
+    text-align: center;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    background-color: #0b383b;
+    color: whitesmoke;
+    border: 2px solid black;
+    padding: 10px;
+}
+/* body font*/
+body{
+    font-family:  sans-serif;
+    
+}
+/* form and results outline */
+.fields{
+    border: 2px solid;
+    border-color: #0b383b;
+    padding: 20px;
+    margin-bottom: 10px;
+    margin-right:20px;
+    margin-left: 20px;
+}
+/* submit button */
+#submit-button{
+    background-color: #0b383b;;
+    color: whitesmoke; 
+}
+/* results table alignment */
+#table-results{
+    margin: auto;
+}
+h4{
+    text-align: center;
+}
