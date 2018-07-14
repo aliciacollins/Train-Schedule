@@ -39,26 +39,46 @@ database.ref().on("child_added", function (childSnapshot) {
     console.log("snapshot", childSnapshot.val());
     var train = childSnapshot.val();
     console.log("var trainFreq", train.Frequency);
+    console.log("trainTime",train.Time);
+    var firstTimeConverted = moment(train.Time, "HH:mm").subtract(1,"years");
+    console.log("firstTimeConverted", firstTimeConverted);
+    
+    var currentTime = moment().format("HH:mm");
+
+    var diffTime = moment().diff(moment(firstTimeConverted),"minutes");
+    console.log('diffTime' + diffTime);
+
+    var remainder =diffTime % train.Frequency;
+    console.log("remainder", remainder);
+
+    var minutesTillTrain = train.Frequency - remainder;
+    console.log("minutes till train", + minutesTillTrain);
+
+    var nextTrain = moment().add(minutesTillTrain, "minutes");
+
+    
+    
+    
     
     
     var arrivalTime = moment(train.Time, 'HH:mm').add(train.Frequency, 'minutes').format('HH:mm');
     
     console.log("arrivalTime",arrivalTime);
-    var currentTime = moment().format("HH:mm");
+    
     console.log ("currentTime",currentTime);
 
-   var fromNow = moment().subtract(arrivalTime,'minutes').format("HH:mm");
+//    var fromNow = moment().subtract(arrivalTime,'minutes').format("HH:mm");
 //THIS SHOULD WORK!!!!!
-    console.log("fromNOw", fromNow);
+    // console.log("fromNOw", fromNow);
     
 
-    var diff = moment(arrivalTime,"HH:mm")-moment(currentTime,"HH:mm");
+    // var diff = moment(arrivalTime,"HH:mm")-moment(currentTime,"HH:mm");
    
-    console.log("diff",diff);
-    var minutesAway = moment(diff).format('MMMM Do YYYY, h:mm:ss a');
-    console.log("minutes away",minutesAway)
-    var remainder = diff % train.Frequency;
-    console.log("remainder", remainder);
+    // console.log("diff",diff);
+    // var minutesAway = moment(diff).format('MMMM Do YYYY, h:mm:ss a');
+    // console.log("minutes away",minutesAway)
+    // var remainder = diff % train.Frequency;
+    // console.log("remainder", remainder);
     var tBody = $("#table-results");
     var tRow = $("<tr>");
 
@@ -67,10 +87,11 @@ database.ref().on("child_added", function (childSnapshot) {
     var colTime = $("<td>").text(train.Time);
     var colFrequency = $("<td>").text(train.Frequency);
     var colArrivalTime = $("<td>").text(arrivalTime);
+    var colMinTilTrain = $("<td>").text(minutesTillTrain);
     console.log("colName", colName);
     ;
 
-    tRow.append(colName, colDestination, colFrequency,colArrivalTime);
+    tRow.append(colName, colDestination, colFrequency,colArrivalTime,colMinTilTrain);
     tBody.append(tRow);
 
 
